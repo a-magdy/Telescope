@@ -51,6 +51,10 @@ Template.layout.helpers({
       return {template: "no_rights", data: {message: i18n.t("sorry_you_need_to_be_an_admin_to_view_this_page")}};
     }
 
+    // if (!isOnUserRoute && !Users.can.view(user)) {
+    //   return {template: "no_rights", data: {message: i18n.t("sorry_you_dont_have_the_rights_to_view_this_page")}};
+    // }
+
     if (!isOnUserRoute && !Users.can.view(user)) {
       return {template: "no_rights", data: {message: i18n.t("sorry_you_dont_have_the_rights_to_view_this_page")}};
     }

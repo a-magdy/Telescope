@@ -1,3 +1,5 @@
+//=======================================================================================
+
 Meteor.startup(function () {
   // // 1. Set up stmp
   // //   your_server would be something like 'smtp.gmail.com'
@@ -31,6 +33,8 @@ Meteor.startup(function () {
   });
 });
 
+//=======================================================================================
+
 function sendVerificationEmail (user) {
 
   //user.profile = {};
@@ -44,3 +48,16 @@ function sendVerificationEmail (user) {
 }
 
 Telescope.callbacks.add("onCreateUser", sendVerificationEmail);
+
+//========================================================================================
+
+Users.is.verified = function (userOrUserId){
+  try{
+    var user = Users.getUser(userOrUserId);
+    return Users.is.admin(user) || (user.emails && user.emails[0] && user.emails[0].verified);
+  }catch(e){
+    return false;
+  }
+};
+
+Users.is.verifiedById = Users.is.verifed;

@@ -34,3 +34,7 @@ mup.json
 packages_update.py
 
 versions
+
+run.sh
+
+.sync-config.cson

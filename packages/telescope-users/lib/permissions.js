@@ -1,4 +1,4 @@
-// note: using collection helpers here is probably a bad idea, 
+// note: using collection helpers here is probably a bad idea,
 // because they'll throw an error when the user is undefined
 
 /**
@@ -21,6 +21,10 @@ Users.can.view = function (user) {
 
     return (!!user && (Users.is.admin(user) || Users.is.invited(user)));
   }
+  // else if(!(user.emails[0].verified))
+  // {
+  //   return false;
+  // }
   return true;
 };
 Users.helpers({canView: function () {return Users.can.view(this);}});
